@@ -1,0 +1,141 @@
+{
+  "name": "@cahil/gatsby-typescript-starter",
+  "version": "1.0.0",
+  "description": "Blog generator",
+  "author": "Cahil Foley",
+  "license": "MIT",
+  "scripts": {
+    "start": "gatsby develop",
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "lint": "npm run lint:ts && npm run lint:md && npm run lint:js && npm run lint:css",
+    "lint:ts": "eslint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
+    "lint:md": "remark .",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "lint:scss": "stylelint src/**/*.scss --syntax scss",
+    "test": "npm run lint && jest",
+    "test:watch": "jest --watch",
+    "generate": "plop --plopfile ./generators/plopfile.js",
+    "graphql-types": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./src/graphql-types.d.ts",
+    "precommit": "lint-staged",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook:build": "build-storybook -c .storybook -o public/docs",
+    "codeclimate": "codeclimate-test-reporter < coverage/lcov.info"
+  },
+  "dependencies": {
+    "change-case": "^3.1.0",
+    "codeclimate-test-reporter": "^0.5.1",
+    "disqus-react": "^1.0.5",
+    "gatsby": "^2.5.0",
+    "gatsby-link": "^2.1.1",
+    "gatsby-plugin-glamor": "^2.0.9",
+    "gatsby-plugin-google-analytics": "^2.0.20",
+    "gatsby-plugin-manifest": "^2.1.1",
+    "gatsby-plugin-offline": "^2.1.0",
+    "gatsby-plugin-sharp": "^2.0.37",
+    "gatsby-plugin-typescript": "^2.0.13",
+    "gatsby-remark-autolink-headers": "^2.0.16",
+    "gatsby-remark-copy-linked-files": "^2.0.12",
+    "gatsby-remark-images": "^3.0.11",
+    "gatsby-remark-prismjs": "^3.2.9",
+    "gatsby-source-filesystem": "^2.0.35",
+    "gatsby-transformer-json": "^2.1.11",
+    "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-transformer-sharp": "^2.1.19",
+    "graphql-code-generator": "^0.18.2",
+    "gray-matter": "^4.0.2",
+    "lodash": "^4.17.11",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "5.2.1",
+    "react-redux": "^7.0.3",
+    "redux-devtools-extension": "^2.13.8",
+    "semantic-ui-react": "^0.87.1",
+    "slash": "3.0.0",
+    "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-info": "^5.0.11",
+    "@storybook/addon-knobs": "^5.0.11",
+    "@storybook/addon-notes": "^5.0.11",
+    "@storybook/addon-options": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "@types/enzyme": "^3.9.2",
+    "@types/jest": "^24.0.13",
+    "@types/lodash": "^4.14.129",
+    "@types/node": "^12.0.2",
+    "@types/reach__router": "^1.2.4",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "5.0.8",
+    "@types/react-redux": "^7.0.9",
+    "@types/react-test-renderer": "^16.8.1",
+    "@types/react": "^16.8.17",
+    "@types/semantic-ui": "^2.2.7",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__addon-knobs": "^5.0.0",
+    "@types/storybook__addon-options": "^4.0.1",
+    "@types/storybook__react": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-config-xo-react": "0.19.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.5.0",
+    "flat": "^4.1.0",
+    "husky": "2.3.0",
+    "jest": "24.8.0",
+    "lint-staged": "8.1.7",
+    "mkdirp": "^0.5.1",
+    "plop": "^2.3.0",
+    "prettier": "^1.17.1",
+    "raw-loader": "^2.0.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-docgen-typescript-loader": "^3.1.0",
+    "react-test-renderer": "16",
+    "remark-cli": "^6.0.1",
+    "remark-preset-lint-recommended": "^3.0.2",
+    "storybook-readme": "^5.0.3",
+    "stylelint": "^10.0.1",
+    "stylelint-config-standard": "^18.3.0",
+    "ts-jest": "24.0.2"
+  },
+  "jest": {
+    "globals": {
+      "__LINK_PREFIX__": "",
+      "__PREFIX_LINKS__": ""
+    },
+    "preset": "ts-jest/presets/js-with-ts"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.md": [
+      "node tools/update-post-date.js",
+      "remark -o",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint"
+    ]
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
+  }
+}
